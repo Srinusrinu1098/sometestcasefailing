@@ -1,0 +1,88 @@
+.main-container {
+  background-color: #000000;
+  min-height: 100vh;
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Media Player Styles */
+
+/* Heading Styles */
+.heading {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 24px;
+  padding-left: 14px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+@media (max-width: 767px) {
+  .heading {
+    font-size: 14px;
+    padding-left: 14px;
+  }
+}
+
+/* Navbar Styles */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  padding: 12px;
+}
+
+/* Music Image Styles */
+.music-img {
+  height: 50px;
+  width: 50px;
+  color: #ffffff;
+}
+
+/* Flex (Responsive Hamburger Menu) Styles */
+.flex {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .flex {
+    display: none;
+  }
+}
+
+/* Unordered List Styles */
+.unordered-list {
+  padding: 0;
+  margin: 0;
+  padding-left: 38px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.error-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  background-color: #ffffff;
+  height: 35px;
+  width: 80px;
+  border: 0px solid;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.error-para {
+  color: #ffffff;
+  font-size: 14px;
+}
+.triangle-image {
+  width: 50px;
+  color: #ffffff;
+}

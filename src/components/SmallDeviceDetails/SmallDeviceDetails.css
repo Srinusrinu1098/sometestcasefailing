@@ -1,0 +1,13 @@
+.smallList {
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  cursor: pointer;
+}
+.smallSongName {
+  font-size: 14px;
+  margin: 0px;
+  max-width: 300px;
+}

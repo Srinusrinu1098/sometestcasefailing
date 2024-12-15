@@ -1,0 +1,53 @@
+.smallList1 {
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.songItem {
+  display: flex;
+  align-items: center;
+  min-width: 170px;
+  flex-grow: 1;
+}
+
+.songIndex {
+  padding-right: 14px;
+}
+
+.songName {
+  min-width: 199px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.songDuration,
+.songArtist,
+.songTime,
+.songAlbum {
+  text-align: center;
+  flex-grow: 1;
+  min-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.songDuration {
+  padding-left: 24px;
+}
+
+.songArtist {
+  max-width: 100px;
+}
+
+.songTime {
+  flex-grow: 1;
+}

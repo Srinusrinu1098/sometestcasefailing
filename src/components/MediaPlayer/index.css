@@ -1,0 +1,19 @@
+.media-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #daaf3b;
+  color: #fff !important;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.rhap_progress-filled {
+  background-color: #3edbf0;
+}
+
+.rhap_progress-indicator {
+  background-color: #3edbf0;
+  border: 2px solid #3edbf0;
+}
