@@ -48,9 +48,43 @@
   display: block;
 }
 
+.flex1 {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .flex {
     display: none;
+  }
+  .main-container {
+    flex-direction: row !important;
+  }
+  .music-img {
+    height: 40px !important;
+    width: 70px !important;
+    color: #ffffff;
+  }
+  .flex1 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .nav-bar {
+    flex-direction: column !important;
+    justify-content: space-between;
+    align-items: center;
+    height: 600px;
+    max-width: 200px !important;
+  }
+  .error-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 50%;
+  }
+  .error-para {
+    text-align: center !important;
   }
 }
 

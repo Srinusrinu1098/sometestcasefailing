@@ -58,7 +58,7 @@ class CategoriesList extends Component {
   renderPending = () => <Loading />
 
   renderFailed = () => (
-    <div className="main-container">
+    <div>
       <h1 className="heading">Genres & Moods</h1>
       <div className="error-flex" style={{paddingTop: '34px'}}>
         <img
@@ -78,7 +78,7 @@ class CategoriesList extends Component {
     const {thumbnails} = this.state
 
     return (
-      <div className="main-container">
+      <div>
         <h1 className="heading">Genres & Moods</h1>
         <ul className="unordered-list">
           {thumbnails.map(each => (

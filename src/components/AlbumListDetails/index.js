@@ -83,6 +83,12 @@ class AlbumListDetails extends Component {
     history.replace('/')
   }
 
+  logOut = () => {
+    const {history} = this.props
+    Cookies.remove('jwt_token')
+    history.replace('/login')
+  }
+
   renderPending = () => (
     <>
       <Loading />
@@ -130,70 +136,91 @@ class AlbumListDetails extends Component {
                 <div className="flex">
                   <GiHamburgerMenu style={{color: '#ffffff'}} />
                 </div>
+                <div className="flex1">
+                  <img
+                    src="https://i.ibb.co/BgN5x0p/Frame-105.png"
+                    alt="logout"
+                    style={{paddingLeft: '6px'}}
+                  />
+                  <button
+                    type="button"
+                    style={{
+                      cursor: 'pointer',
+                      color: '#ffffff',
+                      background: 'transparent',
+                      border: '0px solid',
+                    }}
+                    onClick={this.logOut}
+                  >
+                    Logout
+                  </button>
+                </div>
               </nav>
-              <div
-                className="back"
-                data-testid="back"
-                onClick={this.goBack}
-                role="button"
-                tabIndex={0}
-              >
-                <GoArrowLeft />
-                <button
-                  type="button"
-                  style={{
-                    background: 'transparent',
-                    border: '0px solid',
-                    color: '#ffffff',
-                    cursor: 'pointer',
-                  }}
+              <div style={{width: '100%'}}>
+                <div
+                  className="back"
+                  data-testid="back"
+                  onClick={this.goBack}
+                  role="button"
+                  tabIndex={0}
                 >
-                  Back
-                </button>
-              </div>
-              <div className="banner">
-                <img
-                  src={image}
-                  alt="featured playlist"
-                  className="banner-img"
-                />
-                <div className="name-para">
-                  <h1 className="name-heading">{name}</h1>
-                  <p className="name-para">{label}</p>
+                  <GoArrowLeft />
+                  <button
+                    type="button"
+                    style={{
+                      background: 'transparent',
+                      border: '0px solid',
+                      color: '#ffffff',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Back
+                  </button>
                 </div>
-              </div>
-              <div className="small">
-                <ul className="smallUl">
-                  {newReleaseData.map(each => (
-                    <SmallDeviceDetails key={each.id} value={each} />
-                  ))}
-                </ul>
-              </div>
-              <div className="large">
-                <div className="smallList1">
-                  <p className="songItem" style={{paddingLeft: '120px'}}>
-                    Track
-                  </p>
+                <div className="banner">
+                  <img
+                    src={image}
+                    alt="featured playlist"
+                    className="banner-img"
+                  />
+                  <div className="name-para">
+                    <h1 className="name-heading">{name}</h1>
+                    <p className="name-para">{label}</p>
+                  </div>
+                </div>
+                <div className="small">
+                  <ul className="smallUl">
+                    {newReleaseData.map(each => (
+                      <SmallDeviceDetails key={each.id} value={each} />
+                    ))}
+                  </ul>
+                </div>
+                <div className="large">
+                  <div className="smallList1">
+                    <p className="songItem" style={{paddingLeft: '120px'}}>
+                      Track
+                    </p>
 
-                  <p className="songDuration" style={{paddingLeft: '70px'}}>
-                    Time
-                  </p>
-                  <p className="songArtist">Artist</p>
+                    <p className="songDuration" style={{paddingLeft: '70px'}}>
+                      Time
+                    </p>
+                    <p className="songArtist">Artist</p>
+                  </div>
+
+                  <hr className="hr" />
+                  <ul className="smallUl">
+                    {newReleaseData.map((each, index) => (
+                      <AlbumLargeDevices
+                        key={each.id}
+                        value={each}
+                        number={index}
+                      />
+                    ))}
+                  </ul>
                 </div>
 
-                <hr className="hr" />
-                <ul className="smallUl">
-                  {newReleaseData.map((each, index) => (
-                    <AlbumLargeDevices
-                      key={each.id}
-                      value={each}
-                      number={index}
-                    />
-                  ))}
-                </ul>
+                {ActiveSong && <MediaPlayer />}
               </div>
-
-              {ActiveSong && <MediaPlayer />}
             </div>
           )
         }}

@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+import {Redirect, withRouter} from 'react-router-dom'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import './HomeStyle.css'
 import Loading from '../Loading'
@@ -62,6 +62,12 @@ class Home extends Component {
     this.getAll()
   }
 
+  logOut = () => {
+    const {history} = this.props
+    Cookies.remove('jwt_token')
+    history.replace('/login')
+  }
+
   renderPending = () => <Loading />
 
   renderFailed = () => (
@@ -75,21 +81,42 @@ class Home extends Component {
         <div className="flex">
           <GiHamburgerMenu style={{color: '#ffffff'}} />
         </div>
+        <div className="flex1">
+          <img
+            src="https://i.ibb.co/BgN5x0p/Frame-105.png"
+            alt="logout"
+            style={{paddingLeft: '6px'}}
+          />
+          <button
+            type="button"
+            style={{
+              cursor: 'pointer',
+              color: '#ffffff',
+              background: 'transparent',
+              border: '0px solid',
+            }}
+            onClick={this.logOut}
+          >
+            Logout
+          </button>
+        </div>
       </nav>
-      <h1 className="heading">Popular Playlists</h1>
-      <div className="error-flex">
-        <img
-          src="https://i.ibb.co/8m6mhJn/alert-triangle.png"
-          alt="failure view"
-          className="triangle-image"
-        />
-        <p className="error-para">Something went wrong. Please try again</p>
-        <button type="button" className="button" onClick={this.tryAgain}>
-          Try again
-        </button>
+      <div style={{width: '50%'}}>
+        <h1 className="heading">Editors Picks</h1>
+        <div className="error-flex">
+          <img
+            src="https://i.ibb.co/8m6mhJn/alert-triangle.png"
+            alt="failure view"
+            className="triangle-image"
+          />
+          <p className="error-para">Something went wrong. Please try again</p>
+          <button type="button" className="button" onClick={this.tryAgain}>
+            Try again
+          </button>
+        </div>
+        <CategoriesList />
+        <NewReleaseList />
       </div>
-      <CategoriesList />
-      <NewReleaseList />
     </div>
   )
 
@@ -107,17 +134,39 @@ class Home extends Component {
           <div className="flex">
             <GiHamburgerMenu style={{color: '#ffffff'}} />
           </div>
+          <div className="flex1">
+            <img
+              src="https://i.ibb.co/BgN5x0p/Frame-105.png"
+              alt="logout"
+              style={{paddingLeft: '12px'}}
+            />
+            <button
+              type="button"
+              style={{
+                cursor: 'pointer',
+                color: '#ffffff',
+                background: 'transparent',
+                border: '0px solid',
+                margin: '0px',
+              }}
+              onClick={this.logOut}
+            >
+              Logout
+            </button>
+          </div>
         </nav>
-        <h5 className="heading">Editors Picks</h5>
+        <div>
+          <h5 className="heading">Editors Picks</h5>
 
-        <ul className="unordered-list">
-          {thumbnails.map(each => (
-            <PopularList key={each.id} popular={each} />
-          ))}
-        </ul>
-        <CategoriesList />
-        <NewReleaseList />
-        {ActiveSong && <MediaPlayer />}
+          <ul className="unordered-list">
+            {thumbnails.map(each => (
+              <PopularList key={each.id} popular={each} />
+            ))}
+          </ul>
+          <CategoriesList />
+          <NewReleaseList />
+          {ActiveSong && <MediaPlayer />}
+        </div>
       </div>
     )
   }
@@ -152,4 +201,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default withRouter(Home)

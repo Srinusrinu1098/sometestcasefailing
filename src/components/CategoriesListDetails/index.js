@@ -71,6 +71,12 @@ class CategoriesListDetails extends Component {
     history.replace('/')
   }
 
+  logOut = () => {
+    const {history} = this.props
+    Cookies.remove('jwt_token')
+    history.replace('/login')
+  }
+
   renderPending = () => (
     <>
       <Loading />
@@ -107,32 +113,54 @@ class CategoriesListDetails extends Component {
           <div className="flex">
             <GiHamburgerMenu style={{color: '#ffffff'}} />
           </div>
+          <div className="flex1">
+            <img
+              src="https://i.ibb.co/BgN5x0p/Frame-105.png"
+              alt="logout"
+              style={{paddingLeft: '6px'}}
+            />
+            <button
+              type="button"
+              style={{
+                cursor: 'pointer',
+                color: '#ffffff',
+                background: 'transparent',
+                border: '0px solid',
+                margin: '0px',
+              }}
+              onClick={this.logOut}
+            >
+              Logout
+            </button>
+          </div>
         </nav>
-        <div
-          className="back"
-          data-testid="back"
-          onClick={this.goBack}
-          role="button"
-          tabIndex={0}
-        >
-          <GoArrowLeft />
-          <button
-            type="button"
-            style={{
-              background: 'transparent',
-              border: '0px solid',
-              color: '#ffffff',
-              cursor: 'pointer',
-            }}
+        <div style={{width: '100%'}}>
+          <div
+            className="back"
+            data-testid="back"
+            onClick={this.goBack}
+            role="button"
+            tabIndex={0}
           >
-            Back
-          </button>
+            <GoArrowLeft />
+            <button
+              type="button"
+              style={{
+                background: 'transparent',
+                border: '0px solid',
+                color: '#ffffff',
+                cursor: 'pointer',
+              }}
+            >
+              Back
+            </button>
+          </div>
+          <ul className="unordered-list">
+            {podCast.map(each => (
+              <CategoriesPodCast key={each.id} popular={each} />
+            ))}
+          </ul>
         </div>
-        <ul className="unordered-list">
-          {podCast.map(each => (
-            <CategoriesPodCast key={each.id} popular={each} />
-          ))}
-        </ul>
       </div>
     )
   }
